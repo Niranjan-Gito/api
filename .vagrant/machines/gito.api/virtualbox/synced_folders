@@ -1,0 +1,1 @@
+{"virtualbox":{"/home/vagrant/gito.api":{"type":null,"mount_options":[],"guestpath":"/home/vagrant/gito.api","hostpath":"/home/niranjan/Sites/gito.api","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/niranjan/Sites/gito.api","disabled":false,"__vagrantfile":true}}}
