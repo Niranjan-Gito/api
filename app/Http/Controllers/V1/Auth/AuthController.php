@@ -3,40 +3,49 @@ namespace GitoAPI\Http\Controllers\V1\Auth;
 
 
 use GitoAPI\Http\Requests\registerUser;
-use GitoAPI\Repositories\Users\UserRepositoryInterface;
+use GitoAPI\Http\Requests\subscribeUser;
+use GitoAPI\Services\AuthService;
 
 class AuthController
 {
     /**
-     * @var UserRepositoryInterface
+     * @var AuthService
      */
-    protected $user;
+    protected $auth;
 
     /**
-     * @param UserRepositoryInterface $user
+     * @param AuthService $auth
      */
-    public function __construct(UserRepositoryInterface $user)
+    public function __construct(AuthService $auth)
     {
-        $this->user = $user;
+        $this->auth = $auth;
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param registerUser $request
-     * @return \Illuminate\Contracts\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function register(registerUser $request)
     {
-        if (! $address = $this->user->create($request->all()) ) {
-            return json()->internalError('Failed to create !');
-        }
+        $this->auth->create($request);
+
         // respond created item with 201 status code
-        return json()
-            ->setStatusCode(StatusCode::CREATED)
-            ->withItem(
-                $address,
-                new AddressTransformer()
-            );
+        return json()->created('User registered');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param subscribeUser $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function subscribe(subscribeUser $request)
+    {
+        $this->auth->subscribe($request->all());
+
+        // respond created item with 201 status code
+        return json()->created('Successfully subscribed.');
     }
 }

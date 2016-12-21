@@ -10,12 +10,8 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-use Illuminate\Http\Request;
 
 Route::get('/', function () {
-    // Login and "remember" the given user...
-//    Auth::loginUsingId(1, true);
-//    Auth::logout();
     return view('welcome');
 });
 

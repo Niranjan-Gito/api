@@ -29,13 +29,15 @@ class AddressService
     public function create(Request $request)
     {
         $request->merge($this->formatAddress($request));
-        $data = dispatch(new createUserAddressJob($request->all()));
-        dd($data);
+        dispatch(new createUserAddressJob($request->all()));
     }
 
     public function findOrFail($id)
     {
-        return $this->address->findOrFail($id);
+        if($addres = $this->address->findOrFail($id))
+        {
+            return $addres;
+        }
     }
 
     private function formatAddress($request)

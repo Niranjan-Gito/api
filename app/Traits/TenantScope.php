@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Query\Builder as BaseBuilder;
 use Illuminate\Database\Eloquent\Scope;
 
-class TenantScope implements Scope
+class TenantScope extends AbstractCommon  implements Scope
 {
 
     /**
@@ -54,36 +54,6 @@ class TenantScope implements Scope
             // since there is no binding for these types
             if ( ! in_array($where['type'], ['Null', 'NotNull'])) $bindingKey++;
         }
-    }
-
-    /**
-     * Remove scope constraint from the query.
-     *
-     * @param  \Illuminate\Database\Query\Builder  $builder
-     * @param  int  $key
-     * @return void
-     */
-    protected function removeWhere(BaseBuilder $query, $key)
-    {
-        unset($query->wheres[$key]);
-
-        $query->wheres = array_values($query->wheres);
-    }
-
-    /**
-     * Remove scope constraint from the query.
-     *
-     * @param  \Illuminate\Database\Query\Builder  $builder
-     * @param  int  $key
-     * @return void
-     */
-    protected function removeBinding(BaseBuilder $query, $key)
-    {
-        $bindings = $query->getRawBindings()['where'];
-
-        unset($bindings[$key]);
-
-        $query->setBindings($bindings);
     }
 
     /**

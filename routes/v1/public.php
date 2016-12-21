@@ -3,12 +3,14 @@
 //Auth
 Route::group(['namespace' => 'Auth','middleware' => ['Client']], function () {
     // Controllers Within The "App\Http\Controllers\V1\Auth" Namespace
-    //TODO: need to implement
+    //TODO: need to implement email register activation link ?
     //Auth
-//        Route::post('/register','AuthController@register');
+        Route::post('/register','AuthController@register');
 //        Route::get('/password/change','AuthController@changePassword');
 //        Route::post('/password/email','AuthController@sendResetLinkEmail');
 //        Route::get('/password/reset','AuthController@reset');
+
+    Route::post('/subscribe','AuthController@subscribe');
 });
 
 //Page

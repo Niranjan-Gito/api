@@ -77,3 +77,23 @@ if (!function_exists('gravatar')) {
         return 'http://www.gravatar.com/avatar/' . md5( strtolower( trim( $email ) ) ) . '?d=identicon&s=' . $size ;
     }
 }
+
+if(!function_exists('percentage')){
+    /**
+     * Get the percentage of the feature
+     *
+     * @param $model
+     * @param $feature
+     *
+     * @return string float
+     */
+    function percentage($model, $feature)
+    {
+        if (isset($model->{$feature})) {
+            $total = $model->{$feature}->count();
+            $totalClosed = $model->{$feature}->where('closed_at', '!=', null)->count();
+            return ($totalClosed) ? ceil(($totalClosed * 100) / $total) : 0;
+        }
+        return 0;
+    }
+}

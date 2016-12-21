@@ -1,15 +1,14 @@
 <?php
+namespace GitoAPI\Jobs\User;
 
-namespace GitoAPI\Jobs\Address;
-
-use GitoAPI\Repositories\Address\AddressRepositoryInterface;
+use GitoAPI\Repositories\Newsletter\NewsletterRepositoryInterface;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use League\Flysystem\Exception;
 
-class createUserAddressJob implements ShouldQueue
+class createUserSubscriptionJob implements ShouldQueue
 {
     use InteractsWithQueue, Queueable, SerializesModels;
 
@@ -30,12 +29,12 @@ class createUserAddressJob implements ShouldQueue
 
     /**
      * Execute the job.
-     *
+     * @param NewsletterRepositoryInterface $newsletter
      * @return Mixed
      */
-    public function handle(AddressRepositoryInterface $address)
+    public function handle(NewsletterRepositoryInterface $newsletter)
     {
-        $address->create($this->request);
+        $newsletter->create($this->request);
     }
 
     /**

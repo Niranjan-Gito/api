@@ -1,15 +1,15 @@
 <?php
 
-namespace GitoAPI\Jobs\Address;
+namespace GitoAPI\Jobs\Auth;
 
-use GitoAPI\Repositories\Address\AddressRepositoryInterface;
+use GitoAPI\Repositories\Users\UserRepositoryInterface;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use League\Flysystem\Exception;
 
-class createUserAddressJob implements ShouldQueue
+class createUserRegistrationJob implements ShouldQueue
 {
     use InteractsWithQueue, Queueable, SerializesModels;
 
@@ -33,9 +33,9 @@ class createUserAddressJob implements ShouldQueue
      *
      * @return Mixed
      */
-    public function handle(AddressRepositoryInterface $address)
+    public function handle(UserRepositoryInterface $user)
     {
-        $address->create($this->request);
+        $user->create($this->request);
     }
 
     /**

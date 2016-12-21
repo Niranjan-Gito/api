@@ -5,7 +5,7 @@ Route::group(['namespace' => 'User','middleware' => 'auth:api'], function () {
 
     //Users
     Route::get('/user','UserController@index');
-    Route::post('/user','UserController@update');
+    Route::put('/user','UserController@update');
 });
 
 //Address

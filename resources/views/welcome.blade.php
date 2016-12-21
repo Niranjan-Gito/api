@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Gito.me</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -73,32 +73,31 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    <a href="{{ url('/login') }}">Login</a>
-                    <a href="{{ url('/register') }}">Register</a>
-                </div>
-            @endif
+            {{--@if (Route::has('login'))--}}
+                {{--<div class="top-right links">--}}
+                    {{--<a href="{{ url('/login') }}">Login</a>--}}
+                    {{--<a href="{{ url('/register') }}">Register</a>--}}
+                {{--</div>--}}
+            {{--@endif--}}
 
             <div class="content">
-                <div id="app">
+                {{--<div id="app">--}}
 
-                    <!-- let people make clients -->
-                    <passport-clients></passport-clients>
+                    {{--<!-- let people make clients -->--}}
+                    {{--<passport-clients></passport-clients>--}}
 
-                    <!-- list of clients people have authorized to access our account -->
-                    <passport-authorized-clients></passport-authorized-clients>
+                    {{--<!-- list of clients people have authorized to access our account -->--}}
+                    {{--<passport-authorized-clients></passport-authorized-clients>--}}
 
-                    <!-- make it simple to generate a token right in the UI to play with -->
-                    <passport-personal-access-tokens></passport-personal-access-tokens>
-                </div>
-                {{--<div class="links">--}}
-                    {{--<a href="https://laravel.com/docs">Documentation</a>--}}
-                    {{--<a href="https://laracasts.com">Laracasts</a>--}}
-                    {{--<a href="https://laravel-news.com">News</a>--}}
-                    {{--<a href="https://forge.laravel.com">Forge</a>--}}
-                    {{--<a href="https://github.com/laravel/laravel">GitHub</a>--}}
+                    {{--<!-- make it simple to generate a token right in the UI to play with -->--}}
+                    {{--<passport-personal-access-tokens></passport-personal-access-tokens>--}}
                 {{--</div>--}}
+                <div class="title m-b-md">
+                    Gito.me
+                </div>
+                <div class="links">
+                    <a href="docs">API Documentation</a>
+                </div>
             </div>
         </div>
     </body>

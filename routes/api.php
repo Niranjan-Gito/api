@@ -1,7 +1,4 @@
 <?php
-
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -12,8 +9,6 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-//Route::get('/user', 'ApiController@user ')->middleware('auth:api');
 
 Route::group(['namespace' => 'V1'], function () {
     // Controllers Within The "App\Http\Controllers\V1" Namespace

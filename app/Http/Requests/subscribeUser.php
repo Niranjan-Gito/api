@@ -5,7 +5,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 
 
-class registerUser extends FormRequest
+class subscribeUser extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,9 +26,7 @@ class registerUser extends FormRequest
     {
         return [
             'name'          => 'required|alpha',
-            'email'         => 'required|email|unique:users,email,NULL,id,site_id,'.siteId(),
-            'phone'         => 'required',
-            'password'      => 'required',
+            'email'         => 'required|email|unique:newsletters,email,NULL,id,site_id,'.siteId(),
         ];
     }
 
