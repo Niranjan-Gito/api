@@ -151,16 +151,12 @@ if(!function_exists('imagePath')){
                     return $base_url . '/' . $type . '/medium/' . $filename;
                 } elseif ($size == 'l') {
                     return $base_url . '/' . $type . '/large/' . $filename;
-                } else {
-                    return;
                 }
                 break;
             case 'category':
                 return $base_url . '/promotions/' . $type . '/' . $filename;
-                break;
             case 'promotions':
                 return $base_url . '/' . $type . '/' . $filename;
-                break;
         }
 
         return '';
