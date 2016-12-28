@@ -30,3 +30,10 @@ Route::group(['namespace' => 'Vendor','middleware' => ['Client']], function () {
     Route::get('/vendors','VendorsController@index');
     Route::get('/vendors/{slug}','VendorsController@show');
 });
+
+//Home
+Route::group(['namespace' => 'Home','middleware' => ['Client']], function () {
+    // Controllers Within The "App\Http\Controllers\V1\Home" Namespace
+
+    Route::get('/home/{option}','HomeController@show');
+});

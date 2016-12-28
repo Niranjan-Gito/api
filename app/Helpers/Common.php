@@ -97,3 +97,72 @@ if(!function_exists('percentage')){
         return 0;
     }
 }
+
+if(!function_exists('siteUrl')){
+    /**
+     * Get the URL of the Site/Client append URI and Value
+     *
+     * @param $uri
+     * @param $value
+     *
+     * @return string
+     */
+    function siteUrl($uri, $value)
+    {
+        $domain = \GitoAPI\Repositories\Domains\Domain::where('site_id',siteId())->first();
+        $domain = $domain->fqdn??'';
+        return $domain.'/'.$uri.'/'.$value;
+    }
+}
+
+if(!function_exists('siteName')){
+    /**
+     * Get the Site Name of the Site/Client append URI and Value
+     *
+     *
+     * @return string
+     */
+    function siteName()
+    {
+        $domain = \GitoAPI\Repositories\Domains\Domain::where('site_id',siteId())->first();
+        $domain = $domain->name??'';
+        \Illuminate\Support\Facades\Config::set('app.name', $domain);
+        return $domain;
+    }
+}
+
+if(!function_exists('imagePath')){
+    /**
+     * Get the Image full path of the Site/Client append URI and Value
+     * @param $base_url
+     * @param $filename
+     * @param $type
+     * @param $size
+     *
+     * @return string
+     */
+    function imagePath($base_url,$filename,$type,$size=false)
+    {
+        switch ($type) {
+            case 'products':
+                if ($size == 's') {
+                    return $base_url . '/' . $type . '/small/' . $filename;
+                } elseif ($size == 'm') {
+                    return $base_url . '/' . $type . '/medium/' . $filename;
+                } elseif ($size == 'l') {
+                    return $base_url . '/' . $type . '/large/' . $filename;
+                } else {
+                    return;
+                }
+                break;
+            case 'category':
+                return $base_url . '/promotions/' . $type . '/' . $filename;
+                break;
+            case 'promotions':
+                return $base_url . '/' . $type . '/' . $filename;
+                break;
+        }
+
+        return '';
+    }
+}

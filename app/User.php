@@ -2,6 +2,7 @@
 
 namespace GitoAPI;
 
+use GitoAPI\Notifications\CustomResetPassword;
 use GitoAPI\Repositories\Address\Address;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Passport\HasApiTokens;
@@ -41,6 +42,17 @@ class User extends Authenticatable
         $this->attributes['password'] = Hash::make($value);
 
     }
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new CustomResetPassword($token));
+    }
+
     /**
      * add column name whatever you use in credentials
      * @param $username

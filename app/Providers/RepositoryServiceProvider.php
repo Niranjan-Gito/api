@@ -4,6 +4,8 @@ namespace GitoAPI\Providers;
 
 use GitoAPI\Repositories\Address\AddressRepository;
 use GitoAPI\Repositories\Address\AddressRepositoryInterface;
+use GitoAPI\Repositories\Options\OptionRepository;
+use GitoAPI\Repositories\Options\OptionRepositoryInterface;
 use GitoAPI\Repositories\Users\UserRepository;
 use GitoAPI\Repositories\Users\UserRepositoryInterface;
 use GitoAPI\Repositories\Vendors\VendorRepository;
@@ -19,6 +21,7 @@ class RepositoryServiceProvider extends ServiceProvider
         AddressRepositoryInterface::class   => AddressRepository::class,
         VendorRepositoryInterface::class    => VendorRepository::class,
         UserRepositoryInterface::class      => UserRepository::class,
+        OptionRepositoryInterface::class    => OptionRepository::class,
     ];
     /**
      * Bootstrap the application services.
